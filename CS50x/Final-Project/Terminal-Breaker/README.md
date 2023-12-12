@@ -1,5 +1,4 @@
 # Terminal Breaker
-#### Video Demo:  https://youtu.be/giMj0HukBWk
 
 ## Overview
 A classic brick breaker game written in Python using the Blessed library, that can be played in any terminal emulator. The game allows you to control a paddle (racket) and bounce a ball to break bricks. The objective is to clear all the bricks on the screen while keeping the ball from falling.

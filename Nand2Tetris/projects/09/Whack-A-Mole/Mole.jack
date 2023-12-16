@@ -2,11 +2,13 @@ class Mole {
     field int box_number;
     field int mole_state; // 0: hidden, 1: visible_unhit 2: hit
     field int location, persist_time;
+    field int score;
 
     constructor Mole new(int box, int state) {
         let box_number = box;
         let mole_state = state;
         let persist_time = 0;
+        let score = 0;
         if (box_number = 1){
             let location = 2319;
         }
@@ -37,29 +39,31 @@ class Mole {
             return this;
         }
 
-    method int getState() { return mole_state; }
-    method void setState(int state) {
-        let mole_state = state;
-        return;
+
+    method int getState() {
+        return mole_state;
     }
 
-    method void setPersistTime(in time) {
-        let persist_time = time;
-        return;
+    method int getScore() {
+        return score;
     }
-
-    method void update(boolean hit) { // this is called for each mole in every game loop.
+    
+    method void update(boolean hit) {
         var int popup;
         if (hit) {
             if (mole_state = 1) {
                 let mole_state = 2;
                 do erase();
-                let persist_time = 60;
+                let persist_time = 30;
+                let score = score + 10;
             }
-            else { if (~(mole_state = 2)) {
-                let mole_state = -1;
-                let persist_time = 20;
-            }}
+            else { 
+                if (~(mole_state = 2 | mole_state = -1)){
+                    let mole_state = -1;
+                    let persist_time = 20;
+                    let score = score - 5;
+                }
+            }
         }
         else {
             if (persist_time > 0) {
@@ -69,9 +73,9 @@ class Mole {
                 do erase();
                 let mole_state = 0;
                 let popup = Random.randRange(450);
-                if ((popup = 3) | (popup = 121)) {
+                if (popup < 4) {
                     let mole_state = 1;
-                    let persist_time = 50 + Random.randRange(5);
+                    let persist_time = 20 + Random.randRange(20);
                 }
             }
         }

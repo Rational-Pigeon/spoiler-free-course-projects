@@ -3,6 +3,9 @@
 ## Overview
 A classic brick breaker game written in Python using the Blessed library, that can be played in any terminal emulator. The game allows you to control a paddle (racket) and bounce a ball to break bricks. The objective is to clear all the bricks on the screen while keeping the ball from falling.
 
+![ezgif-2-f708bf67d9](https://github.com/Rational-Pigeon/spoiler-free-course-projects/assets/104268960/8335369c-81f0-4149-a4b7-695bf011ce2c)
+
+
 ## Features
 - Control the paddle (racket) using the left and right arrow keys.
 - Launch the ball by pressing the spacebar.
